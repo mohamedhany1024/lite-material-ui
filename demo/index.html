@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../dist/materialUI.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="screen" id="main">
+        <div class="titleBar">
+            <p>Lorem 1</p>
+        </div>
+        <div class="container">
+            <div class="dialogueBox" id="dBox2">
+                <div class="box">
+                    <h3>Properties</h3>
+                    <div class="divider"></div>
+                    <title for="editText1">Due Payments</title>
+                    <input type="text" id="editText1" class="editText" placeholder="due payments">
+                    <div class="divider">
+                    </div>
+                    <button>confirm</button>
+                    <button onclick="closeDialogue('dBox2')">cancel</button>
+                </div>
+            </div>
+            <h3>Clients:</h3>
+            <div class="divider"></div>
+            
+
+            <div class="card2 client" onclick="openDialogue('dBox2')"><img src="user_ico.png" width="50"><p>Cobol</p></div>
+            <div class="card2 client"> <img src="user_ico.png" width="50"> lorem</div>
+            <button class="btn" onclick="openScreen('s1')">Next</button>
+        </div>
+        
+    </div>
+
+    <div class="screen" id="s1">
+        <div class="titleBar">
+            <p>Lorem 2</p>
+        </div>
+        <div class="container">
+            <div class="dialogueBox" id="dBox1">
+                <div class="box">
+                    <h3>Lorem</h3>
+                    <div class="divider"></div>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia excepturi saepe aspernatur similique quas facilis nihil suscipit, possimus dignissimos, aperiam, obcaecati magnam? Reiciendis minima accusamus autem?</p>
+                    <div class="divider"></div>
+                    <button class="dialogueBtn" onclick="closeDialogue('dBox1')">Close</button>
+                    <button>Agree</button>
+                </div>
+            </div>
+            <h3>Controls</h3>
+            <div class="divider">
+
+            </div>
+            <br>
+            <input type="text" class="editText" placeholder="Name">
+            <p>Lorem ipsum dolor sit.</p>
+            <button onclick="openScreen('main')" class="btn">Back</button>
+            <button class="btn" onclick="openDialogue('dBox1')">Activate</button>
+            <button class="btn" onclick="openScreen('s3')">Open</button>
+            <button class="btn" onclick="pushToast('Hello, Toast 🍞', 3000)">Toast</button>
+        </div>
+    </div>
+
+    <div class="screen" id="s3">
+        <div class="tabbedTitleCont">
+            <div class="titleBarTabbed"><p>Lorem 3</p></div>
+            <div class="grid2ng">
+                <button id="tab1" class="tabOption tabOption--Active" onclick="switchTab('tab 1', this.id)">Tab 1</button>
+                <button id="tab2" class="tabOption" onclick="switchTab('tab 2', this.id)">Tab 2</button>
+            </div>
+        </div>
+        <div class="tabPage" id="tab 1">
+            <p>Lorem, ipsum.</p>
+        </div>
+        <div class="tabPage" id="tab 2">
+            <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="container">
+            <h3>stone</h3>
+            <div class="divider"></div>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, ipsum nihil pariatur ipsa illo, amet iusto voluptas delectus animi, facere natus aperiam. Deleniti, magni?</p>
+            <button class="btn" onclick="openScreen('s1')">Back</button>
+        </div>
+    </div>
+
+
+    <script src="../dist/webUtils.js"></script>
+</body>
+</html>

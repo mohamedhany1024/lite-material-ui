@@ -1,0 +1,19 @@
+.client {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    /* margin: 15px; */
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.btn {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+    font-weight: light;
+}
