@@ -87,6 +87,12 @@ function pushToast(text, duration) {
 	}, duration);
 }
 
+function updateProperties(propertyObjects) {
+	for(i = 0; i < propertyObjects.length; i++) {
+		document.querySelector(':root').style.setProperty(propertyObjects[i].name, propertyObjects[i].value);
+	}
+}
+
 function main() {
 	document.getElementById("main").style.display = "block";
 	switchTab(document.querySelector('.tabPage').id, document.querySelector('.tabOption').id);
