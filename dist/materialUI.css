@@ -86,6 +86,34 @@ body {
     }
 }
 
+@keyframes toastActive2 {
+    0% {
+        opacity: 0;
+        scale: (0.4);
+        transform: translate(-50%, -20px);
+    }
+
+    100% {
+        opacity: 1;
+        scale: (1);
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes toastInactive2 {
+    0% {
+        opacity: 1;
+        scale: (1);
+        transform: translate(-50%, 0);
+    }
+
+    100% {
+        opacity: 0;
+        scale: (0.4);
+        transform: translate(-50%, -20px);
+    }
+}
+
 @keyframes fade-in {
     0% {
         opacity: 0;
@@ -426,7 +454,7 @@ body {
     bottom: 10%;
     transform: translateX(-50%);
     /* opacity: 0; */
-    animation: toastActive 0.4s ease-out;
+    animation: toastActive2 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 
@@ -435,7 +463,7 @@ body {
 }
 
 .toast--inactive {
-    animation: toastInactive 0.4s ease-out;
+    animation: toastInactive2 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .divider {

@@ -73,7 +73,10 @@ function switchTab(idd, dId) {
 }
 
 function pushToast(text, duration) {
-	document.getElementById(currentScreen).innerHTML+= '<div class="toast" id="tmpToast"><p>'+text+'</p></div>';
+	document.getElementById(currentScreen).insertAdjacentHTML(
+        'beforeend',
+        `<div class="toast" id="tmpToast"><p>${text}</p></div>`
+    );
 	//document.getElementById("tmpToast").classList.add("toast--active");
 	setTimeout(()=> {
 		//document.getElementById("tmpToast").style.display = "none";
