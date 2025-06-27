@@ -2,9 +2,11 @@ let currentScreen = "main";
 let currentTab;
 let ghosts;
 
+let actionMode = true;
+
 function openScreen(screen) {
 	setTimeout(()=> { 
-		var screens = document.getElementsByClassName("screen")
+	var screens = document.getElementsByClassName("screen")
 	var screenId = screen;
 	
 	var screenIds;
@@ -16,6 +18,7 @@ function openScreen(screen) {
 	
 	currentScreen = screen;
 	document.getElementById(screenId).style.display = "block";
+	//appendRipples();
 	
 
 	setTimeout(()=> {
@@ -88,14 +91,107 @@ function pushToast(text, duration) {
 }
 
 function updateProperties(propertyObjects) {
+	
+	
 	for(i = 0; i < propertyObjects.length; i++) {
 		document.querySelector(':root').style.setProperty(propertyObjects[i].name, propertyObjects[i].value);
 	}
 }
 
 function main() {
-	document.getElementById("main").style.display = "block";
-	switchTab(document.querySelector('.tabPage').id, document.querySelector('.tabOption').id);
+	try {
+		//document.getElementById("main").style.display = "block";
+	} catch (e) {
+		console.log("Main screen not found");
+	}
+	
+	try {
+		switchTab(document.querySelector('.tabPage').id, document.querySelector('.tabOption').id);
+	} catch (e) {
+		console.log("No Tabs Were Found");
+	}
+	
 }
+
+
+	let actionRegistry = new Map();
+	//main action class
+	class action {
+		constructor(actionName, actionMethod) {
+			this.name = actionName;
+			// sets the method to be used when a specific action is invoked
+			this.actionMethod = actionMethod;
+			//register the actionName into the registry so that, it can be accessed later by string
+			actionRegistry.set(this.name, this);
+		}
+	}
+		function getURLParams() {
+		let params = new Map();
+		let url = new URL(window.location.href);
+		for (const [key, value] of url.searchParams.entries()) {
+			params.set(key, value);
+		}
+
+		return params;
+
+	}
+
+	function performAction(actionName, params) {
+		let url = new URL(window.location.href);
+		Object.entries(params).forEach(([key, value]) => {
+			if (value === null || value === undefined) {
+			  url.searchParams.delete(key);
+			} else {
+			  url.searchParams.set(key, value);
+			}
+		  });
+
+		  window.history.pushState({}, '', url);
+
+		  actionRegistry.get(actionName).actionMethod(params);
+	}
+
+	function performActionFromURL() {
+		let params = getURLParams();
+		let acName = params.get("action");
+
+		if (acName == null) {
+			openScreen('main');
+		} else {
+			console.log(acName);
+			console.log(actionRegistry.get(acName));
+
+			actionRegistry.get(acName).actionMethod(params);
+		}
+		
+		 
+	}
+
+
+	
+	window.addEventListener('popstate', (event) => {
+		console.log('Navigation occurred! New URL:', window.location.href);
+		
+		// Access any state data you stored with pushState/replaceState
+		console.log('State data:', event.state);
+		
+		// You can now handle the URL change
+		window.addEventListener('DOMContentLoaded', (event)=> {
+			performActionFromURL();
+		});
+		
+	  });
+	
+	  function goBack() {
+		window.history.back();
+	}
+
+	//performActionFromURL();
+	window.addEventListener('DOMContentLoaded', (event)=> {
+		performActionFromURL();
+	});
+
+
+
 
 window.onload = main;
