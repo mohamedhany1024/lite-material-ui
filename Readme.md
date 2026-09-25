@@ -11,5 +11,7 @@ Current features:
 - toasts
 - buttons
 - cards
+- ripples on card3
 - dividers
 - text inputs
+- shareable states through actions (deep links)

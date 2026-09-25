@@ -13,6 +13,34 @@
     margin-bottom: 2px;
 }
 
+.jobCard__title {
+    font-weight: 500;
+}
+
+.jobCard__sub {
+    color: #6d6d6d;
+}
+
+.jobCard__badge {
+    display: inline-block;
+    border-radius: 100px;
+    padding: 2px 10px;
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 85%;
+}
+
+.titleBar .barIco {
+    background-color: transparent;
+    color: white;
+    font-size: 150%;
+    padding: 8px;
+}
+
+#shareLink {
+    width: 100%;
+}
+
 * {
     font-family: 'Roboto', sans-serif;
     font-weight: light;

@@ -13,7 +13,7 @@
 <body>
     <div class="screen" id="main">
         <div class="titleBar">
-            <p>Lorem 1</p>
+            <p>Jobs</p>
         </div>
         <div class="container">
             <div class="dialogueBox" id="dBox2">
@@ -30,13 +30,30 @@
             </div>
             <h3>Clients:</h3>
             <div class="divider"></div>
-            
 
             <div class="card2 client" onclick="openDialogue('dBox2')"><img src="user_ico.png" width="50"><p>Cobol</p></div>
             <div class="card2 client"> <img src="user_ico.png" width="50"> lorem</div>
+            <div class="divider"></div>
+
+            <h3>Jobs</h3>
+            <p>Click a job to open its details. The url updates, so the state is shareable.</p>
+            <div id="jobList"></div>
+
             <button class="btn" onclick="openScreen('s1')">Next</button>
         </div>
-        
+
+    </div>
+
+    <div class="screen" id="jobDetails">
+        <div class="titleBar">
+            <button class="barIco" onclick="performAction('jobsList', { jobId: null })">&#8592;</button>
+            <p id="jobDetailsTitle">Job</p>
+        </div>
+        <div class="container" id="jobDetailsBody"></div>
+        <div class="container">
+            <button class="btn" id="copyLink">Copy link</button>
+            <button class="btn" onclick="goBack()">Back</button>
+        </div>
     </div>
 
     <div class="screen" id="s1">
@@ -93,5 +110,6 @@
 
 
     <script src="../dist/webUtils.js"></script>
+    <script src="demo.js"></script>
 </body>
 </html>
